@@ -22,8 +22,8 @@ var imageY = 300;
 // Global timer variable, uninitialized
 var simpleTimer;
 
-// Drawing progress bar
-var progBarWidth;    // init in setup() to match screen width with marget
+// For creating the progress bar
+var progBarWidth;   
 var progBarHeight = 20;
 var hMargin = 60;
 var vMargin = 90;
@@ -36,7 +36,7 @@ var instructionY = 60;
 var waitForButton = true;
 
 // Button text to start
-var textButton = "Start";
+var textButton;
 
 // Text button location
 var textButtonX = 230;
@@ -60,7 +60,8 @@ function setup() {
   rectMode(CORNER);
   imageMode(CENTER);
 
-  progBarWidth = width - (hMargin*2);    // give some margin to edge
+// to space out the bar
+  progBarWidth = width - (hMargin*2);   
  }
 
 function draw() {
@@ -85,6 +86,7 @@ function draw() {
       text("Press the start button to restart!", instructionX, instructionY + 50);
       image(images[1], imageX, imageY);
   }
+
   // After clicking the start button
   else {
     // wait for button === false
@@ -108,7 +110,7 @@ function drawTimerText() {
 function drawProgressBar() {
   // Draw a growing rectangle, from left to right
   noStroke();
-  fill(240,124,0);
+  fill(100,100,0);
   rect( hMargin, vMargin + progBarHeight, progBarWidth*simpleTimer.getPercentageElapsed(), progBarHeight );
   
   // Draw an outline on top of the rect
@@ -116,8 +118,6 @@ function drawProgressBar() {
   stroke(50);
   strokeWeight(1);
   rect( hMargin, vMargin + progBarHeight, progBarWidth, progBarHeight );
-
-  noStroke();
 }
 
 //Creat text button
